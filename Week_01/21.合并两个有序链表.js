@@ -19,7 +19,7 @@
  */
 
  // 双指针
- // 时: O(m+n)
+ // 时: O(min(m,n)~ m+n)
  // 空: O(1)
 var mergeTwoLists = function(l1, l2) {
     const fakeHead = new ListNode(null);

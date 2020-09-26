@@ -67,25 +67,17 @@ var trap = function(height) {
 // 空：O（1）
 var trap = function(height) {
     let left = 0;
-    let maxLeft = 0;
-    let maxRight = 0;
-    let count = 0;
     let right = height.length - 1;
-    while(left < right) {
-        if (height[left] < height[right]) {
-            if (height[left] > maxLeft) {
-                maxLeft = height[left];
-            } else {
-                count += maxLeft - height[left]
-            }
-            left++;
+    let max_left = 0;
+    let max_right = 0;
+    let count = 0;
+    while (left < right) {
+        if (height[left] < height[right]) { 
+            max_left = Math.max(height[left],max_left);
+            count += max_left - height[left++];
         } else {
-            if (height[right] > maxRight) {
-                maxRight = height[right];
-            } else {
-                count += maxRight - height[right]
-            }
-            right--;
+            max_right = Math.max(height[right],max_right);
+            count += max_right - height[right--];
         }
     }
     return count;

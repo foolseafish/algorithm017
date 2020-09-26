@@ -13,7 +13,7 @@
 
  // 时：O(n)
  // 空：O(n)
-var twoSum = function(nums, target) {
+ var twoSum = function(nums, target) {
     const dic = {};    
     for (let i = 0, len = nums.length; i < len; i++) {
         const num = nums[i];
@@ -21,6 +21,19 @@ var twoSum = function(nums, target) {
             return [dic[target-num],i];
         } 
         dic[num] = i;
+    }
+    return [-1, -1];
+};
+
+ // 时：O(n2)
+ // 空：O(1)
+ var twoSum = function(nums, target) {
+    for (let i = 0, len = nums.length; i < len; i++) {
+        const num = nums[i];
+        let index = nums.indexOf(target - num , i + 1);
+        if (~index) {
+            return [i , index];
+        }
     }
     return [-1, -1];
 };
